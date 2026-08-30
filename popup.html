@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <div class="head">
+      <div id="title" class="title">Looking for a video…</div>
+      <div id="clock" class="clock"><span id="cur">–:–</span><span class="dim"> / </span><span id="dur" class="dim">–:–</span></div>
+    </div>
+
+    <div class="bar"><div id="fill" class="fill"></div></div>
+
+    <form id="form" class="row">
+      <input id="time" type="text" placeholder="1:30, 90, 1h2m3s" autocomplete="off" spellcheck="false">
+      <button id="go" type="submit">Go</button>
+    </form>
+
+    <div class="nudges">
+      <button class="nudge" data-d="-60">−60</button>
+      <button class="nudge" data-d="-10">−10</button>
+      <button class="nudge" data-d="-1">−1</button>
+      <button class="nudge" data-d="1">+1</button>
+      <button class="nudge" data-d="10">+10</button>
+      <button class="nudge" data-d="60">+60</button>
+    </div>
+
+    <div class="pcts">
+      <button class="pct" data-p="0">0%</button>
+      <button class="pct" data-p="0.25">25%</button>
+      <button class="pct" data-p="0.5">50%</button>
+      <button class="pct" data-p="0.75">75%</button>
+      <button id="copy" class="link" title="Copy a link to this exact time">Copy link</button>
+    </div>
+
+    <button id="save" class="save" title="Play a moment so the site records this as your resume point">Save resume point</button>
+
+    <div id="status" class="status"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #16181d;
+  --dim: #6b7280;
+  --line: #e4e6eb;
+  --btn: #f3f4f6;
+  --btn-hover: #e7e9ee;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --ok: #15803d;
+  --err: #b91c1c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181c;
+    --fg: #e8eaed;
+    --dim: #9aa0a6;
+    --line: #2c2e33;
+    --btn: #232529;
+    --btn-hover: #2e3137;
+    --accent: #4f8cff;
+    --accent-fg: #0d0f13;
+    --ok: #4ade80;
+    --err: #f87171;
+  }
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  width: 288px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+#app { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+
+.head { display: flex; flex-direction: column; gap: 3px; }
+.title {
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--dim);
+}
+.clock { font-size: 20px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.dim { color: var(--dim); font-size: 15px; }
+
+.bar { height: 4px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.fill { height: 100%; width: 0%; background: var(--accent); transition: width .12s linear; }
+
+.row { display: flex; gap: 6px; }
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+}
+input:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: transparent; }
+
+button {
+  font: inherit;
+  color: var(--fg);
+  background: var(--btn);
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 7px 10px;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--btn-hover); }
+button:disabled { opacity: .45; cursor: default; }
+#go { background: var(--accent); color: var(--accent-fg); font-weight: 600; padding-inline: 14px; }
+#go:hover:not(:disabled) { filter: brightness(1.08); }
+
+.nudges, .pcts { display: flex; gap: 4px; }
+.nudge, .pct { flex: 1; padding: 6px 0; font-size: 12px; font-variant-numeric: tabular-nums; }
+.link { flex: 2.4; font-size: 12px; padding: 6px 4px; }
+
+.save { width: 100%; font-size: 12px; padding: 7px 0; }
+
+.status { min-height: 15px; font-size: 11.5px; color: var(--dim); }
+.status.ok { color: var(--ok); }
+.status.err { color: var(--err); }
